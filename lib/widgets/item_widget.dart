@@ -8,8 +8,9 @@ class  Itemwidget extends StatelessWidget {
    
 final Item item;
 
-  const Itemwidget({Key? key, required this.item}) 
-  : super(key: key);
+  const Itemwidget({Key key, @required this.item})
+      : assert(item != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ final Item item;
           subtitle: Text(item.desc),
           trailing: Text(item.price.toString(),
           textScaleFactor: 1.5,
-          style: TextStyle(  color: Colors.deepPurple,
+          style: const TextStyle(  color: Colors.deepPurple,
           fontWeight : FontWeight.bold,
           ),
           ),

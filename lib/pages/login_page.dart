@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+ 
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState.validate()) {
       setState(() {
         changeButton = true;
       });
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Username",
                         ),
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value.isEmpty) {
                             return "Username cannot be empty";
                           }
 
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Password",
                         ),
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value.isEmpty) {
                             return "Password cannot be empty";
                           } else if (value.length < 6) {
                             return "Password length should be atleast 6";
