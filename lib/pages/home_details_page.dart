@@ -32,7 +32,7 @@ class HomeDetailPage extends StatelessWidget {
                   child:"Buy".text.make(),
                 ).wh(100, 50)
               ],
-              ).p32(),
+              ).p16(),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -57,6 +57,8 @@ class HomeDetailPage extends StatelessWidget {
                 catalog.name.text.xl4.bold.make(),
               catalog.desc.text.textStyle(context.captionStyle).make(),
               10.heightBox,
+            "One of the best looking phone in the market right now with a decent performance jump from 11 pro. Camera is excellent and the display is quite responsive and sharp. Only issue is it does not have a higher refresh rate and the battery life is average."
+            .text.textStyle(context.captionStyle).make().p16()
               ],
               ).py64(),
               ),
