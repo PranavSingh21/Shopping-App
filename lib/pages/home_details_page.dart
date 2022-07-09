@@ -15,24 +15,27 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      backgroundColor:Colors.white,
-      bottomNavigationBar: ButtonBar(
-                alignment: MainAxisAlignment.spaceBetween,
-                buttonPadding: EdgeInsets.zero,
-                children: [
+      backgroundColor:context.canvasColor,
+      bottomNavigationBar: Container(
+        color: context.cardColor,
+        child: ButtonBar(
+                  alignment: MainAxisAlignment.spaceBetween,
+                  buttonPadding: EdgeInsets.zero,
+                  children: [
 
-                "\$${catalog.price}".text.bold.xl4.make(),
-                ElevatedButton(onPressed: (){}, 
-                style : ButtonStyle(
-                  backgroundColor:MaterialStateProperty.all(
-                    MyThemes.darkBluishColor),
-                    
-                    shape: MaterialStateProperty.all(StadiumBorder()),
-                    ) ,
-                  child:"Buy".text.make(),
-                ).wh(100, 50)
-              ],
-              ).p16(),
+                  "\$${catalog.price}".text.bold.xl4.make(),
+
+                  ElevatedButton(onPressed: (){}, 
+                  style : ButtonStyle(
+                    backgroundColor:MaterialStateProperty.all(context.theme.buttonColor),
+                      
+                      shape: MaterialStateProperty.all(StadiumBorder()),
+                      ) ,
+                    child:"Buy".text.make(),
+                  ).wh(100, 50)
+                ],
+                ).p16(),
+      ),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -49,12 +52,12 @@ class HomeDetailPage extends StatelessWidget {
             arcType: VxArcType.CONVEY,
             edge:VxEdge.TOP,
             child: Container(
-              color :MyThemes.creamColor,
+              color :context.cardColor,
               width: context.screenWidth,
               child: Column(
                 children: [
 
-                catalog.name.text.xl4.bold.make(),
+                catalog.name.text.xl4.color(context.accentColor).bold.make(),
               catalog.desc.text.textStyle(context.captionStyle).make(),
               10.heightBox,
             "One of the best looking phone in the market right now with a decent performance jump from 11 pro. Camera is excellent and the display is quite responsive and sharp. Only issue is it does not have a higher refresh rate and the battery life is average."
