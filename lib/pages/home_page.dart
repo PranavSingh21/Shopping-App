@@ -13,8 +13,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
-import 'home_widgets/catalog_header.dart';
-import 'home_widgets/catalog_list.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
