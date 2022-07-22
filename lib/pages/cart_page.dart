@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -73,9 +74,9 @@ class _CartList extends StatelessWidget {
         : ListView.builder(
             itemCount: _cart.items?.length,
             itemBuilder: (context, index) => ListTile(
-              leading: Icon(Icons.done),
+              leading: Icon(CupertinoIcons.cart_fill),
               trailing: IconButton(
-                icon: Icon(Icons.remove_circle_outline),
+                icon: Icon(Icons.delete),
                 onPressed: () {
                   RemoveMutation(_cart.items[index]);
                 },
