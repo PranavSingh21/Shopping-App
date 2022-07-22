@@ -3,8 +3,6 @@ import 'package:flutter_application_1/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
- 
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -21,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
         changeButton = true;
       });
       await Future.delayed(const Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      await context.vxNav.push(Uri.parse(MyRoutes.homeRoute));
       setState(() {
         changeButton = false;
       });
@@ -31,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color:context.canvasColor,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: SafeArea(
             child: Form(
@@ -69,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (value.isEmpty) {
                               return "Username cannot be empty";
                             }
-          
+
                             return null;
                           },
                           onChanged: (value) {
@@ -89,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                             } else if (value.length < 6) {
                               return "Password length should be atleast 6";
                             }
-          
+
                             return null;
                           },
                         ),
