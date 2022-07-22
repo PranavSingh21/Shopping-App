@@ -1,44 +1,61 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
+import 'package:flutter_application_1/pages/cart_page.dart';
+import 'package:flutter_application_1/pages/home_details_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_application_1/pages/main_page.dart';
+import 'package:flutter_application_1/utils/routes.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 import 'pages/home_page.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  
+
+  setPathUrlStrategy();
+
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override //
+  @override
   Widget build(BuildContext context) {
-    // double pi = 3.14;
-    // bool isMale = true;
-    // num temp = 30.5;
+    return MaterialApp.router(
 
-    // var day = "tuesday"; //auto detection of type
-    // const pi = 3.14; // constant value
 
-    return  MaterialApp(
-     
-      themeMode: ThemeMode.light,
-      theme: ThemeData( 
-      primarySwatch: Colors.purple,
-      fontFamily: GoogleFonts.lato().fontFamily,
-      ),
-    
-      darkTheme: ThemeData(
-        primarySwatch: Colors.red,
-        ),
+      themeMode: ThemeMode.system,
+      theme: MyThemes.lightTheme(context),
+      darkTheme: MyThemes.darkTheme(context),
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: VxInformationParser(),
 
-initialRoute: "/",
-        routes: {
+      routerDelegate: VxNavigator(routes: {
+        "/": (_, __) => MaterialPage(child: MainPage()),
 
-          "/" : (context)=>  const LoginPage(),
-          "/home": (context) =>const HomePage(),
-          "/login": (context)=> const LoginPage(),
+        MyRoutes.homeRoute: (_, __) => MaterialPage(child: HomePage()),
+        MyRoutes.homeDetailsRoute: (uri, params) {
+          final catalog = (VxState.store as MyStore)
+              .catalog
+              .getById(int.parse(uri.queryParameters["id"]));
+
+          return MaterialPage(
+              child: HomeDetailPage(
+            catalog: params,
+          ));
         },
+        MyRoutes.loginRoute: (_, __) => MaterialPage(child: LoginPage()),
+        MyRoutes.cartRoute: (_, __) => MaterialPage(child: CartPage()),
+      }),
+      
     );
   }
 }
