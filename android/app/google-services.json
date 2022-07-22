@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814874586010",
+    "project_id": "popping-6ff9e",
+    "storage_bucket": "popping-6ff9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814874586010:android:33cd4394403dd8da8d2823",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814874586010-esep6ue9mjh8991gdqr5c6p3pe1vot23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4UERdwPDLKpabFcqhZ_CJ4zvaQXVmcW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814874586010-esep6ue9mjh8991gdqr5c6p3pe1vot23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

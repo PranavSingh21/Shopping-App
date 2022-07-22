@@ -31,7 +31,7 @@ class MyThemes {
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.white),
         toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-        titleTextStyle: Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),
+        titleTextStyle: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white),
       )
       ); 
 

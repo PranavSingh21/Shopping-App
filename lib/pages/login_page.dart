@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -8,6 +9,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // controller
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+        setState(() {
+          
+        });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    _passwordController.dispose();
+    
+    super.dispose();
+  }
+
   String name = "";
   bool changeButton = false;
 
@@ -59,9 +83,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: _emailController,
                           decoration: const InputDecoration(
-                            hintText: "Enter username",
-                            labelText: "Username",
+                            hintText: "Enter email",
+                            labelText: "Email",
                           ),
                           validator: (value) {
                             if (value.isEmpty) {
@@ -76,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         TextFormField(
+                          controller: _passwordController,
                           obscureText: true,
                           decoration: const InputDecoration(
                             hintText: "Enter password",
@@ -99,7 +125,8 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius:
                               BorderRadius.circular(changeButton ? 50 : 8),
                           child: InkWell(
-                            onTap: () => moveToHome(context),
+                            onTap: signIn,
+                            // onTap: () => moveToHome(context),
                             child: AnimatedContainer(
                               duration: const Duration(seconds: 1),
                               width: changeButton ? 50 : 150,
